@@ -2,6 +2,8 @@
   "name": "struxar",
   "private": true,
   "version": "0.0.0",
+  "homepage": ".",
+  "license": "UNLICENSED",
   "type": "module",
   "scripts": {
     "dev": "vite",

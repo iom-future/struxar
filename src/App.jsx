@@ -1,5 +1,5 @@
 import { useEffect, lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Nav from "./components/layout/Nav";
 import Footer from "./components/layout/Footer";
@@ -58,7 +58,7 @@ export default function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ScrollToTop />
       <div className="min-h-screen flex flex-col">
         <Nav />
@@ -69,6 +69,6 @@ export default function App() {
         </main>
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
