@@ -30,13 +30,13 @@ export default function Features() {
           {features.intro}
         </motion.p>
 
-        {/* Bento Grid */}
+        {/* Standard Grid */}
         <motion.div
           variants={stagger}
-          className="grid grid-cols-1 md:grid-cols-12 gap-4"
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6"
         >
           {features.cards.map((card) => (
-            <motion.div key={card.title} variants={fadeUp} className={`${card.colSpan || "col-span-12"} ${card.rowSpan || ""}`}>
+            <motion.div key={card.title} variants={fadeUp}>
               <BentoCard {...card} />
             </motion.div>
           ))}
