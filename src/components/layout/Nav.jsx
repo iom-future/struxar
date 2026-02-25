@@ -102,7 +102,7 @@ export default function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-0 z-[99] bg-navy-950/98 flex flex-col items-center justify-center gap-6 md:hidden"
+            className="fixed inset-0 top-0 z-[99] bg-navy-950 flex flex-col items-center justify-center gap-6 md:hidden"
           >
             <button
               className="absolute top-5 right-5 text-white p-2"

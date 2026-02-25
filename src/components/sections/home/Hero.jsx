@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import CircuitBg from "../../ui/CircuitBg";
 import StatCounter from "../../ui/StatCounter";
 import { hero } from "../../../constants/content";
+import heroImage from "../../../assets/hero_image.png";
 
 export default function Hero() {
   return (
@@ -22,105 +23,125 @@ export default function Hero() {
         }}
       />
 
-      {/* Content */}
-      <div className="relative section-padding flex flex-col items-center text-center max-w-[900px] mx-auto">
-        {/* Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
-          style={{
-            background: "rgba(37,99,235,0.12)",
-            border: "1px solid rgba(37,99,235,0.3)",
-          }}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-          <span className="eyebrow text-blue-400">{hero.eyebrow}</span>
-        </motion.div>
-
-        {/* H1 */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-display text-base font-extrabold text-white mb-6"
-          style={{
-            fontSize: "clamp(2.6rem, 6vw, 5rem)",
-            letterSpacing: "-0.02em",
-            lineHeight: 1.1,
-          }}
-        >
-          {hero.h1Line1}
-          <br />
-          <span className="gradient-text">{hero.h1Line2}</span>
-        </motion.h1>
-
-        {/* Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-body font-light max-w-2xl mb-4"
-          style={{
-            fontSize: "clamp(1rem, 2vw, 1.2rem)",
-            color: "rgba(255,255,255,0.7)",
-          }}
-        >
-          {hero.subheadline}
-        </motion.p>
-
-        {/* Supporting */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="font-body font-light italic text-white/40 text-sm mb-8 max-w-xl"
-        >
-          {hero.supporting}
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-wrap gap-4 mb-8 justify-center"
-        >
-          <Link
-            to="/demo"
-            className="font-body bg-blue-600 text-white px-8 py-3.5 rounded-[10px] font-medium hover:bg-[#1d4ed8] transition-all"
-            style={{ boxShadow: "0 0 30px rgba(37,99,235,0.35)" }}
-          >
-            {hero.ctaPrimary}
-          </Link>
-          <button
-            onClick={() =>
-              document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="font-body text-white border border-white/20 px-8 py-3.5 rounded-[10px] hover:border-white/40 hover:bg-white/5 transition-all"
-          >
-            {hero.ctaSecondary}
-          </button>
-        </motion.div>
-
-        {/* Trust Badges */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex flex-wrap gap-4 md:gap-6 justify-center"
-        >
-          {hero.trustBadges.map((badge) => (
-            <span
-              key={badge}
-              className="font-body text-[0.78rem]"
-              style={{ color: "rgba(255,255,255,0.45)" }}
+      {/* Content Container */}
+      <div className="relative max-w-7xl mx-auto section-padding">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Text Content (50% on desktop) */}
+          <div className="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
+              style={{
+                background: "rgba(37,99,235,0.12)",
+                border: "1px solid rgba(37,99,235,0.3)",
+              }}
             >
-              {badge}
-            </span>
-          ))}
-        </motion.div>
+              <span className="text-xs text-blue-400">{hero.eyebrow}</span>
+            </motion.div>
+
+            {/* H1 */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="font-display text-4xl lg:text-5xl font-extrabold text-white mb-6"
+              style={{
+                letterSpacing: "-0.02em",
+                lineHeight: 1.1,
+              }}
+            >
+              {hero.h1Line1}
+              <br />
+              <span className="bg-gradient-to-br from-blue-500 to-blue-400 bg-clip-text text-transparent">
+                {hero.h1Line2}
+              </span>
+            </motion.h1>
+
+            {/* Subheadline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="font-body font-light max-w-2xl mb-4"
+              style={{
+                fontSize: "clamp(1rem, 2vw, 1.2rem)",
+                color: "rgba(255,255,255,0.7)",
+              }}
+            >
+              {hero.subheadline}
+            </motion.p>
+
+            {/* Supporting */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="font-body font-light italic text-white/40 text-sm mb-8 max-w-xl"
+            >
+              {hero.supporting}
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-wrap gap-4 mb-8 justify-center lg:justify-start"
+            >
+              <Link
+                to="/demo"
+                className="font-body bg-blue-600 text-white px-8 py-3.5 rounded-[10px] font-medium hover:bg-[#1d4ed8] transition-all"
+                style={{ boxShadow: "0 0 30px rgba(37,99,235,0.35)" }}
+              >
+                {hero.ctaPrimary}
+              </Link>
+              <button
+                onClick={() =>
+                  document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="font-body text-white border border-white/20 px-8 py-3.5 rounded-[10px] hover:border-white/40 hover:bg-white/5 transition-all"
+              >
+                {hero.ctaSecondary}
+              </button>
+            </motion.div>
+
+            {/* Trust Badges */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="flex flex-wrap gap-4 md:gap-6 justify-center lg:justify-start"
+            >
+              {hero.trustBadges.map((badge) => (
+                <span
+                  key={badge}
+                  className="font-body text-[0.78rem]"
+                  style={{ color: "rgba(255,255,255,0.45)" }}
+                >
+                  {badge}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Hero Image (50% on desktop) */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="lg:w-1/2 w-full relative group"
+          >
+            <div className="absolute -inset-4 bg-blue-500/10 blur-3xl rounded-full group-hover:bg-blue-500/20 transition-all duration-500" />
+            <img 
+              src={heroImage} 
+              alt="Struxar Intelligence Platform" 
+              className="relative w-full h-auto rounded-2xl shadow-2xl border border-white/10"
+            />
+          </motion.div>
+        </div>
       </div>
 
       {/* Stats Bar */}
