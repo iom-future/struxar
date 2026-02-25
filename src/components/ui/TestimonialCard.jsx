@@ -13,6 +13,7 @@ export default function TestimonialCard({ quote, name, role, image }) {
           src={image}
           alt={name}
           className="w-full h-full object-cover"
+          loading="lazy"
         />
       </div>
 

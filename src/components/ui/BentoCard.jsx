@@ -63,6 +63,7 @@ export default function BentoCard({ icon, title, body, bg, textColor, colSpan, r
             alt="" 
             className="w-full h-full object-contain filter drop-shadow-3xl"
             aria-hidden="true"
+            loading="lazy"
           />
         </motion.div>
       )}

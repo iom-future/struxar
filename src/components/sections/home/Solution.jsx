@@ -147,6 +147,7 @@ export default function Solution() {
                     alt=""
                     className="w-full h-full object-cover"
                     aria-hidden="true"
+                    loading="lazy"
                   />
                 </motion.div>
               </AnimatePresence>

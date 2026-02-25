@@ -19,6 +19,7 @@ const Footer = memo(function Footer() {
                 alt="" 
                 className="h-7 w-auto object-contain" 
                 aria-hidden="true"
+                loading="lazy"
               />
               <span
                 className="font-display font-bold text-white text-sm tracking-[0.05em] group-hover:text-blue-400 transition-colors"
