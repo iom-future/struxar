@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Youtube } from "lucide-react";
 import { footer } from "../../constants/content";
+import logo from "../../assets/struxar_logo.png";
 
 export default function Footer() {
   return (
@@ -10,14 +11,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand column */}
           <div className="md:col-span-2">
-            <Link to="/" className="inline-block mb-4">
+            <Link to="/" className="flex items-center gap-2.5 mb-6 group">
+              <img 
+                src={logo} 
+                alt="Struxar" 
+                className="h-7 w-auto object-contain" 
+              />
               <span
-                className="font-display font-extrabold text-white text-xl"
-                style={{ letterSpacing: "0.1em" }}
+                className="font-display font-bold text-white text-sm tracking-[0.05em] group-hover:text-blue-400 transition-colors"
               >
                 STRUXAR
               </span>
-              <span className="text-blue-500 font-display font-extrabold text-xl">.</span>
             </Link>
             <p className="font-body font-light text-white/60 text-sm max-w-md leading-relaxed mb-6">
               {footer.tagline}

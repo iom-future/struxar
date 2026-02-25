@@ -51,7 +51,7 @@ export default function SocialProof() {
         {/* Testimonials */}
         <motion.div
           variants={stagger}
-          className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 mb-16"
         >
           {socialProof.testimonials.map((t, i) => (
             <motion.div key={t.name} variants={fadeUp}>

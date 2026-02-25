@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { nav } from "../../constants/content";
+import logo from "../../assets/struxar_logo.png";
 
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -32,14 +33,17 @@ export default function Nav() {
       >
         <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-4 md:px-8">
           {/* Logo */}
-          <Link to="/" className="flex-shrink-0">
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <img 
+              src={logo} 
+              alt="Struxar" 
+              className="h-8 w-auto object-contain" 
+            />
             <span
-              className="font-display font-extrabold text-white text-xl"
-              style={{ letterSpacing: "0.1em" }}
+              className="font-display font-bold text-white text-sm tracking-[0.05em] group-hover:text-blue-400 transition-colors"
             >
               STRUXAR
             </span>
-            <span className="text-blue-500 font-display font-extrabold text-xl">.</span>
           </Link>
 
           {/* Desktop Nav Links */}
