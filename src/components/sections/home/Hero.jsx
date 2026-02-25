@@ -93,7 +93,7 @@ export default function Hero() {
             >
               <Link
                 to="/demo"
-                className="font-body bg-blue-600 text-white px-8 py-3.5 rounded-[10px] font-medium hover:bg-[#1d4ed8] transition-all"
+                className="font-body bg-blue-600 w-full rounded-[10px] md:w-auto text-white px-8 py-3.5  font-medium hover:bg-[#1d4ed8] transition-all"
                 style={{ boxShadow: "0 0 30px rgba(37,99,235,0.35)" }}
               >
                 {hero.ctaPrimary}
@@ -102,7 +102,7 @@ export default function Hero() {
                 onClick={() =>
                   document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="font-body text-white border border-white/20 px-8 py-3.5 rounded-[10px] hover:border-white/40 hover:bg-white/5 transition-all"
+                className="font-body w-full rounded-[10px] md:w-auto text-white border border-white/20 px-8 py-3.5  hover:border-white/40 hover:bg-white/5 transition-all"
               >
                 {hero.ctaSecondary}
               </button>
