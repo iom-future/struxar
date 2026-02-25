@@ -473,3 +473,42 @@ export const howItWorks = {
     },
   ],
 };
+// ─── Team Section ──────────────────────────────────────────
+export const team = {
+  eyebrow: "OUR LEADERSHIP",
+  h2: "The Minds Building the Future of Construction.",
+  intro:
+    "We are a team of engineers, researchers, and construction veterans united by a single vision: to bring intelligence to every job site in the world.",
+  members: [
+    {
+      name: "Marcus Holt",
+      role: "CEO & Co-Founder",
+      bio: "14 years in construction project management. Built Struxar after watching billions lost to outdated tools and reactive safety. His mission: zero surprises on every site in the world.",
+    },
+    {
+      name: "Priya Nair",
+      role: "CTO & Co-Founder",
+      bio: "Former AI research lead, holds 3 patents in predictive systems. Architect of StruxAI Predict. She builds intelligence that works so quietly, your team never has to think about what could go wrong.",
+    },
+    {
+      name: "James Calloway",
+      role: "Chief Product Officer",
+      bio: "Shipped AR products used by millions before joining Struxar. Leads StruxAR Vision. Obsessed with one question: how does a worker on a dusty job site actually use this without slowing down.",
+    },
+    {
+      name: "Sofia Reyes",
+      role: "Chief Safety Officer",
+      bio: "17 years across active construction sites in the US and Latin America. Oversaw safety compliance for 40,000+ workers. At Struxar she doesn't just meet safety standards — she rewrites them.",
+    },
+    {
+      name: "David Okafor",
+      role: "VP of Engineering",
+      bio: "Spent a decade architecting IoT networks at Siemens. Leads the team behind StruxSense Network. Turns raw construction sites into living, breathing, self-reporting data systems.",
+    },
+    {
+      name: "Rachel Kim",
+      role: "VP of Sales & Partnerships",
+      bio: "Closed over $200M in enterprise SaaS deals across the construction tech sector. Brings Struxar to the teams that need it most and makes sure they never want to build without it again.",
+    },
+  ],
+};

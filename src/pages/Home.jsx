@@ -7,6 +7,8 @@ import Features from "../components/sections/home/Features";
 import SocialProof from "../components/sections/home/SocialProof";
 import CTA from "../components/sections/home/CTA";
 
+import Team from "../components/sections/home/Team";
+
 export default function Home() {
   return (
     <>
@@ -25,6 +27,7 @@ export default function Home() {
         <Solution />
         <Features />
         <SocialProof />
+        <Team />
         <CTA />
       </motion.div>
     </>
