@@ -34,20 +34,20 @@ export default function Solution() {
         >
           {solution.h2}
         </motion.h2>
-        <motion.p variants={fadeUp} className="font-body font-light text-[#64748B] max-w-3xl mb-12 leading-relaxed">
+        <motion.p variants={fadeUp} className="font-body font-light text-[#64748B] max-w-3xl mb-12 text-base sm:text-lg md:text-xl leading-relaxed">
           {solution.intro}
         </motion.p>
 
         {/* Tab Switcher */}
-        <motion.div variants={fadeUp} className="flex flex-wrap gap-2 mb-8">
+        <motion.div variants={fadeUp} className="flex flex-wrap gap-2 mb-6">
           {solution.tabs.map((tab, i) => (
             <button
               key={tab.label}
               onClick={() => setActiveTab(i)}
-              className={`font-body text-sm px-5 py-2.5 rounded-full transition-all ${
+              className={`font-body text-sm xl:text-base px-5 py-2.5 rounded-full transition-all ${
                 activeTab === i
                   ? "bg-blue-600 text-white shadow-lg"
-                  : "bg-slate-100 text-[#0F172A] hover:bg-slate-200"
+                  : "bg-slate-200 text-[#0F172A] hover:bg-slate-300"
               }`}
             >
               {tab.label}
@@ -55,10 +55,50 @@ export default function Solution() {
           ))}
         </motion.div>
 
+        {/* Swipe Hint (Mobile Only) */}
+        <motion.div 
+          variants={fadeUp}
+          className="md:hidden flex items-center gap-2 mb-4 text-[#64748B] text-xs font-body font-medium"
+        >
+          <span className="flex gap-1">
+            <motion.span 
+              animate={{ x: [0, -4, 0] }} 
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            >←</motion.span>
+            Slide card to see more
+            <motion.span 
+              animate={{ x: [0, 4, 0] }} 
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            >→</motion.span>
+          </span>
+        </motion.div>
+
         {/* Tab Content */}
-        <motion.div variants={fadeUp}>
-          <div className="bg-white rounded-[20px] border border-slate-200 overflow-hidden flex flex-col md:flex-row h-[400px]">
-            <div className="w-full md:w-1/2 relative bg-slate-100 min-h-[300px] md:min-h-0">
+        <motion.div 
+          variants={fadeUp}
+          className="relative"
+        >
+          <motion.div 
+            className="bg-white rounded-[20px] border border-slate-200 overflow-hidden md:h-[370px] h-auto flex flex-col md:flex-row touch-pan-y cursor-grab active:cursor-grabbing"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.05}
+            onDragEnd={(e, info) => {
+              const swipeThreshold = 50;
+              const velocityThreshold = 500;
+              const swipe = info.offset.x;
+              const velocity = info.velocity.x;
+
+              if (Math.abs(swipe) > swipeThreshold || Math.abs(velocity) > velocityThreshold) {
+                if (swipe > 0 && activeTab > 0) {
+                  setActiveTab(prev => prev - 1);
+                } else if (swipe < 0 && activeTab < solution.tabs.length - 1) {
+                  setActiveTab(prev => prev + 1);
+                }
+              }
+            }}
+          >
+            <div className="w-full image-container md:w-[35%] h-[250px] md:h-full relative bg-slate-100 pointer-events-none">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
@@ -77,7 +117,7 @@ export default function Solution() {
               </AnimatePresence>
             </div>
 
-            <div className="w-full md:w-1/2 p-8 md:p-14 flex flex-col justify-center">
+            <div className="w-full md:w-[65%] p-4 md:p-8 flex flex-col justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
@@ -87,15 +127,15 @@ export default function Solution() {
                   transition={{ duration: 0.3 }}
                 >
                   <h3
-                    className="font-display font-bold text-[#0F172A] text-xl md:text-3xl mb-4"
+                    className="font-display font-bold text-[#0F172A] text-lg md:text-xl lg:text-2xl  mb-4"
                     style={{ letterSpacing: "-0.02em" }}
                   >
                     {solution.tabs[activeTab].headline}
                   </h3>
-                  <p className="font-body font-light text-[#64748B] leading-relaxed mb-8 text-lg">
+                  <p className="font-body font-light text-[#64748B] leading-relaxed mb-8 text-base ">
                     {solution.tabs[activeTab].body}
                   </p>
-                  <div className="pt-6 border-t border-slate-100">
+                  <div className="pt-2 border-t border-slate-100">
                     <span className="block text-xs uppercase tracking-widest text-[#64748B] mb-2 font-body font-medium">Outcome</span>
                     <span className="inline-block font-display font-bold text-blue-600 text-xl">
                       {solution.tabs[activeTab].stat}
@@ -104,15 +144,31 @@ export default function Solution() {
                 </motion.div>
               </AnimatePresence>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
-
+       {/* Swipe Hint (Mobile Only) */}
+        <motion.div 
+          variants={fadeUp}
+          className="md:hidden flex items-center gap-2 mb-8 mt-4 text-[#64748B] text-xs font-body font-medium"
+        >
+          <span className="flex gap-1">
+            <motion.span 
+              animate={{ x: [0, -4, 0] }} 
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            >←</motion.span>
+            Slide card to see more
+            <motion.span 
+              animate={{ x: [0, 4, 0] }} 
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            >→</motion.span>
+          </span>
+        </motion.div>
         {/* Convergence Banner */}
         <motion.div
           variants={fadeUp}
           className="bg-navy-900 rounded-2xl p-8 md:p-10 mt-8 text-center"
         >
-          <p className="font-body font-light text-white/80 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-body font-light md:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
             {solution.convergence}
           </p>
         </motion.div>

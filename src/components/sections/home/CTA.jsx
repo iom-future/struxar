@@ -5,7 +5,7 @@ export default function CTA() {
     <section className="bg-navy-950">
       {/* Urgency Banner */}
       <div
-        className="text-center py-3 px-4 font-body text-white text-sm"
+        className="text-center py-3 px-4 font-body text-white text-sm md:text-base"
         style={{ background: "linear-gradient(90deg, #2563EB, #1d4ed8)" }}
       >
         {cta.urgency}
@@ -19,13 +19,13 @@ export default function CTA() {
           >
             {cta.h2}
           </h2>
-          <p className="font-body font-light text-white/60 mb-12 max-w-xl mx-auto">
+          <p className="font-body  text-base sm:text-lg md:text-xl font-light text-white/60 mb-12 max-w-xl mx-auto">
             {cta.subheadline}
           </p>
 
           {/* Form Card */}
           <div className="bg-white rounded-2xl p-8 md:p-10 max-w-[560px] mx-auto shadow-xl">
-            <h3 className="font-display font-bold text-[#0F172A] text-xl mb-6">
+            <h3 className="font-display font-bold text-[#0F172A] text-xl md:text-2xl mb-6">
               {cta.formHeadline}
             </h3>
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>

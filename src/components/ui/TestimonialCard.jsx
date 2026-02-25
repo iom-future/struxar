@@ -25,14 +25,14 @@ export default function TestimonialCard({ quote, name, role, image }) {
       </span>
 
       <div className="mt-8">
-        <p className="font-body font-light text-[#0F172A] leading-relaxed text-[1rem] mb-6 italic">
+        <p className="font-body font-light text-[#0F172A] leading-relaxed text-[1rem] mb-6 italic md:text-lg">
           "{quote}"
         </p>
 
         <div className="flex items-center gap-3 pt-4 border-t border-slate-50">
           <div>
-            <p className="font-body font-bold text-[#0F172A] text-sm uppercase tracking-wider">{name}</p>
-            <p className="font-body text-[#64748B] text-xs">{role}</p>
+            <p className="font-body font-bold text-[#0F172A] md:text-base text-sm uppercase tracking-wider">{name}</p>
+            <p className="font-body text-[#64748B] text-xs md:text-sm">{role}</p>
           </div>
         </div>
       </div>

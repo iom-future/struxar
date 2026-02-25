@@ -29,7 +29,7 @@ export default function Problem() {
         >
           {problem.h2}
         </motion.h2>
-        <motion.p variants={fadeUp} className="font-body font-light text-[#64748B] max-w-3xl mb-12 leading-relaxed">
+        <motion.p variants={fadeUp} className="font-body font-light text-[#64748B] max-w-3xl mb-12 text-base sm:text-lg md:text-xl leading-relaxed">
           {problem.intro}
         </motion.p>
 
@@ -54,10 +54,10 @@ export default function Problem() {
                 <div className="w-12 h-12 rounded-xl bg-blue-600/10 flex items-center justify-center mb-4">
                   {Icon && <Icon size={24} className="text-blue-600" />}
                 </div>
-                <h3 className="font-display font-bold text-[#0F172A] text-lg mb-3" style={{ letterSpacing: "-0.02em" }}>
+                <h3 className="font-display font-bold text-[#0F172A] text-lg md:text-xl mb-3" style={{ letterSpacing: "-0.02em" }}>
                   {card.title}
                 </h3>
-                <p className="font-body font-light text-[#64748B] text-sm leading-relaxed">
+                <p className="font-body font-light text-[#64748B] text-base md:text-lg leading-relaxed">
                   {card.body}
                 </p>
               </motion.div>
@@ -70,10 +70,10 @@ export default function Problem() {
           variants={fadeUp}
           className="bg-navy-800 rounded-2xl p-8 md:p-12 border-l-4 border-blue-600"
         >
-          <p className="font-body font-bold text-blue-500 text-lg md:text-xl leading-relaxed mb-4">
+          <p className="font-body font-bold text-blue-500 text-lg md:text-xl  leading-relaxed mb-4">
             {problem.pullQuote.highlight}
           </p>
-          <p className="font-body font-light text-white/[0.55] text-sm">
+          <p className="font-body font-light text-white/[0.55] text-sm md:text-base">
             {problem.pullQuote.followUp}
           </p>
         </motion.div>

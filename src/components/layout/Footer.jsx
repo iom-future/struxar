@@ -39,7 +39,7 @@ export default function Footer() {
           {/* Nav columns */}
           {footer.columns.map((col) => (
             <div key={col.title}>
-              <h4 className="font-display font-bold text-white text-sm mb-4 tracking-wide">
+              <h4 className="font-display font-bold text-white text-sm mb-4 tracking-wide md:text-lg">
                 {col.title}
               </h4>
               <ul className="space-y-3">
@@ -47,7 +47,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       to={link.to}
-                      className="font-body text-white/50 text-sm hover:text-white transition-colors"
+                      className="font-body text-white/50 text-sm hover:text-white transition-colors md:text-base"
                     >
                       {link.label}
                     </Link>

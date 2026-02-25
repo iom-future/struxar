@@ -11,7 +11,7 @@ export default function Nav() {
     <header className="sticky top-0 z-[100]">
       {/* Announcement Banner */}
       <div
-        className="text-center py-2 px-4 text-white text-xs font-body"
+        className="text-center py-2 px-4 text-white text-xs md:text-base font-body"
         style={{
           background: "linear-gradient(90deg, #2563EB, #1d4ed8)",
         }}
@@ -43,13 +43,13 @@ export default function Nav() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {nav.links.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
-                  `font-body text-[0.875rem] transition-colors ${
+                  `font-body text-[0.875rem] lg:text-base transition-colors ${
                     isActive
                       ? "text-white underline underline-offset-4"
                       : "text-white/[0.72] hover:text-white"
@@ -63,12 +63,12 @@ export default function Nav() {
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <button className="font-body text-[0.875rem] text-white px-4 py-2 hover:text-blue-400 transition-colors">
+            <button className="font-body text-[0.875rem] lg:text-base text-white px-4 py-2 hover:text-blue-400 transition-colors">
               Log In
             </button>
             <Link
               to="/demo"
-              className="font-body text-[0.875rem] bg-blue-600 text-white px-5 py-2.5 rounded-[10px] hover:bg-[#1d4ed8] transition-all"
+              className="font-body text-[0.875rem] lg:text-base bg-blue-600 text-white px-5 py-2.5 rounded-[10px] hover:bg-[#1d4ed8] transition-all"
               style={{ boxShadow: "0 0 20px rgba(37,99,235,0.25)" }}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.boxShadow =
