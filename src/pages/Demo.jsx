@@ -25,7 +25,9 @@ export default function Demo() {
 
           <div className="relative section-padding flex flex-col items-center justify-center min-h-screen">
             <div className="text-center max-w-xl mx-auto mb-10">
-              <p className="eyebrow text-blue-400 mb-4">REQUEST A DEMO</p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-blue-600/10 border border-blue-600/30">
+                <span className="text-xs font-bold tracking-widest text-blue-400 uppercase">REQUEST A DEMO</span>
+              </div>
               <h1
                 className="font-display font-extrabold text-white mb-4"
                 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", letterSpacing: "-0.02em" }}
