@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Nav from "./components/layout/Nav";
@@ -11,6 +11,17 @@ const Pricing = lazy(() => import("./pages/Pricing"));
 const CaseStudies = lazy(() => import("./pages/CaseStudies"));
 const Blog = lazy(() => import("./pages/Blog"));
 const Demo = lazy(() => import("./pages/Demo"));
+
+// ScrollToTop component ensures navigation always starts at the top
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -38,8 +49,17 @@ function LoadingSpinner() {
 }
 
 export default function App() {
+  useEffect(() => {
+    // Prevent browser from restoring scroll position on reload
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col">
         <Nav />
         <main className="flex-1">
