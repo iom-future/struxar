@@ -16,11 +16,13 @@ const Nav = memo(function Nav() {
         style={{
           background: "linear-gradient(90deg, #2563EB, #1d4ed8)",
         }}
+        role="complementary"
+        aria-label="Announcement"
       >
         <span>{nav.announcement} </span>
         <Link
           to="/demo"
-          className="underline font-bold hover:text-blue-200 transition-colors"
+          className="underline font-bold hover:text-blue-200 transition-colors focus:ring-2 focus:ring-white rounded px-1"
         >
           {nav.announcementLink}
         </Link>
@@ -34,7 +36,7 @@ const Nav = memo(function Nav() {
       >
         <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-4 md:px-8">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group" aria-label="Struxar Home">
+          <Link to="/" className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-lg p-1" aria-label="Struxar Home">
             <img 
               src={logo} 
               alt="" 
@@ -55,7 +57,7 @@ const Nav = memo(function Nav() {
                 <NavLink
                   to={link.to}
                   className={({ isActive }) =>
-                    `font-body text-[0.875rem] lg:text-base transition-colors ${
+                    `font-body text-[0.875rem] lg:text-base transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 ${
                       isActive
                         ? "text-white underline underline-offset-4"
                         : "text-white/[0.72] hover:text-white"
@@ -72,7 +74,7 @@ const Nav = memo(function Nav() {
           <div className="hidden md:flex items-center gap-3">
             <button 
               type="button"
-              className="font-body text-[0.875rem] lg:text-base text-white px-4 py-2 hover:text-blue-400 transition-colors"
+              className="font-body text-[0.875rem] lg:text-base text-white px-4 py-2 hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 rounded"
             >
               Log In
             </button>

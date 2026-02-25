@@ -98,16 +98,18 @@ export default function FeaturesPage() {
                   <motion.div
                     variants={fadeUp}
                     className="flex-1 w-full"
+                    role="img"
+                    aria-label={`Visual representation of ${feature.title}`}
                   >
                     <div className="bg-navy-800 rounded-2xl p-12 flex items-center justify-center min-h-[300px] border border-blue-600/20">
-                      {Icon && <Icon size={80} className="text-blue-400/40" />}
+                      {Icon && <Icon size={80} aria-hidden="true" className="text-blue-400/40" />}
                     </div>
                   </motion.div>
 
                   {/* Content */}
                   <motion.div variants={fadeUp} className="flex-1">
                     <div className="w-12 h-12 rounded-xl bg-blue-600/10 flex items-center justify-center mb-4">
-                      {Icon && <Icon size={24} className="text-blue-600" />}
+                      {Icon && <Icon size={24} aria-hidden="true" className="text-blue-600" />}
                     </div>
                     <h2 className="font-display font-bold text-[#0F172A] text-2xl md:text-3xl mb-4" style={{ letterSpacing: "-0.02em" }}>
                       {feature.title}
@@ -115,10 +117,10 @@ export default function FeaturesPage() {
                     <p className="font-body font-light text-[#64748B] leading-relaxed mb-6">
                       {feature.description}
                     </p>
-                    <ul className="space-y-3">
+                    <ul className="space-y-3" aria-label={`${feature.title} specifications`}>
                       {feature.specs.map((spec) => (
                         <li key={spec} className="flex items-start gap-3">
-                          <ArrowRight size={16} className="text-blue-600 mt-0.5 flex-shrink-0" />
+                          <ArrowRight size={16} aria-hidden="true" className="text-blue-600 mt-0.5 flex-shrink-0" />
                           <span className="font-body text-[#0F172A] text-sm">{spec}</span>
                         </li>
                       ))}

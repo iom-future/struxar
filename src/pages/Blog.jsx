@@ -32,7 +32,7 @@ export default function Blog() {
         </section>
 
         {/* Blog Grid */}
-        <section className="bg-slate-50 section-padding">
+        <section className="bg-slate-50 section-padding" aria-label="Blog posts grid">
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {blog.posts.map((post, i) => (
               <motion.article
@@ -43,7 +43,15 @@ export default function Blog() {
                 variants={fadeUp}
                 transition={{ delay: i * 0.08 }}
                 whileHover={{ y: -4, boxShadow: "0 8px 40px rgba(37,99,235,0.12)" }}
-                className="bg-white rounded-2xl border border-slate-200 overflow-hidden cursor-pointer group"
+                className="bg-white rounded-2xl border border-slate-200 overflow-hidden cursor-pointer group focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 outline-none"
+                tabIndex={0}
+                role="link"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    // Navigation logic would go here if routes existed for individual posts
+                  }
+                }}
               >
                 {/* Category header */}
                 <div className="bg-navy-800 h-32 flex items-end p-5">
@@ -63,10 +71,10 @@ export default function Blog() {
                       <span className="font-body text-xs">{post.date}</span>
                       <span className="text-slate-300">·</span>
                       <span className="font-body text-xs flex items-center gap-1">
-                        <Clock size={12} /> {post.readTime}
+                        <Clock size={12} aria-hidden="true" /> {post.readTime}
                       </span>
                     </div>
-                    <ArrowRight size={16} className="text-blue-600 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight size={16} aria-hidden="true" className="text-blue-600 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </motion.article>

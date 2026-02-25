@@ -13,7 +13,7 @@ const Footer = memo(function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand column */}
           <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-2.5 mb-6 group" aria-label="Struxar Home">
+            <Link to="/" className="flex items-center gap-2.5 mb-6 group focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-lg p-1" aria-label="Struxar Home">
               <img 
                 src={logo} 
                 alt="" 
@@ -31,13 +31,13 @@ const Footer = memo(function Footer() {
             </p>
             {/* Social links */}
             <div className="flex items-center gap-4">
-              <a href="#" className="text-white/40 hover:text-blue-400 transition-colors" aria-label="LinkedIn">
+              <a href="#" className="text-white/40 hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 rounded" aria-label="LinkedIn">
                 <Linkedin size={20} aria-hidden="true" />
               </a>
-              <a href="#" className="text-white/40 hover:text-blue-400 transition-colors" aria-label="Twitter">
+              <a href="#" className="text-white/40 hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 rounded" aria-label="Twitter">
                 <Twitter size={20} aria-hidden="true" />
               </a>
-              <a href="#" className="text-white/40 hover:text-blue-400 transition-colors" aria-label="YouTube">
+              <a href="#" className="text-white/40 hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 rounded" aria-label="YouTube">
                 <Youtube size={20} aria-hidden="true" />
               </a>
             </div>
@@ -54,7 +54,7 @@ const Footer = memo(function Footer() {
                   <li key={link.label}>
                     <Link
                       to={link.to}
-                      className="font-body text-white/50 text-sm hover:text-white transition-colors md:text-base"
+                      className="font-body text-white/50 text-sm hover:text-white transition-colors md:text-base focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-1"
                     >
                       {link.label}
                     </Link>
@@ -70,7 +70,7 @@ const Footer = memo(function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             <div>
               <p className="font-body text-white/30 text-xs uppercase tracking-wider mb-1">General Inquiries</p>
-              <a href={`mailto:${footer.contact.email}`} className="font-body text-white/70 text-sm hover:text-blue-400 transition-colors">
+              <a href={`mailto:${footer.contact.email}`} className="font-body text-white/70 text-sm hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-1">
                 {footer.contact.email}
               </a>
             </div>
@@ -97,7 +97,7 @@ const Footer = memo(function Footer() {
           <ul className="flex items-center gap-4">
             {footer.legalLinks.map((link, i) => (
               <li key={link} className="flex items-center">
-                <a href="#" className="font-body text-white/30 text-xs hover:text-white/60 transition-colors">
+                <a href="#" className="font-body text-white/30 text-xs hover:text-white/60 transition-colors focus:outline-none focus:ring-2 focus:ring-white/20 rounded px-1">
                   {link}
                 </a>
                 {i < footer.legalLinks.length - 1 && (

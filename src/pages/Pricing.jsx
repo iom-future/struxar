@@ -50,7 +50,7 @@ export default function Pricing() {
                 }`}
               >
                 {tier.highlighted && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-blue-600 text-white text-xs font-body font-medium rounded-full">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-blue-600 text-white text-xs font-body font-medium rounded-full" role="status">
                     Most Popular
                   </div>
                 )}
@@ -68,10 +68,10 @@ export default function Pricing() {
                 <p className={`font-body text-sm mb-8 ${tier.highlighted ? "text-white/60" : "text-[#64748B]"}`}>
                   {tier.description}
                 </p>
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-8" aria-label={`${tier.name} tier features`}>
                   {tier.features.map((f) => (
                     <li key={f} className="flex items-start gap-3">
-                      <Check size={16} className={`mt-0.5 flex-shrink-0 ${tier.highlighted ? "text-blue-400" : "text-blue-600"}`} />
+                      <Check size={16} aria-hidden="true" className={`mt-0.5 flex-shrink-0 ${tier.highlighted ? "text-blue-400" : "text-blue-600"}`} />
                       <span className={`font-body text-sm ${tier.highlighted ? "text-white/80" : "text-[#0F172A]"}`}>{f}</span>
                     </li>
                   ))}

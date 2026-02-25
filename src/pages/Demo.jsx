@@ -12,15 +12,17 @@ export default function Demo() {
       </Helmet>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
         <section className="bg-navy-950 min-h-screen relative overflow-hidden">
-          <CircuitBg opacity={0.1} />
+          <CircuitBg opacity={0.1} aria-hidden="true" />
           {/* Radial glows */}
           <div
             className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full"
             style={{ background: "radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%)" }}
+            aria-hidden="true"
           />
           <div
             className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full"
             style={{ background: "radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%)" }}
+            aria-hidden="true"
           />
 
           <div className="relative section-padding flex flex-col items-center justify-center min-h-screen">
@@ -45,32 +47,57 @@ export default function Demo() {
                 {cta.formHeadline}
               </h2>
               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="text"
-                  placeholder="Full Name"
-                  className="w-full px-4 py-3 rounded-[10px] border border-slate-200 font-body text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
-                />
-                <input
-                  type="email"
-                  placeholder="Work Email"
-                  className="w-full px-4 py-3 rounded-[10px] border border-slate-200 font-body text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
-                />
-                <input
-                  type="text"
-                  placeholder="Company"
-                  className="w-full px-4 py-3 rounded-[10px] border border-slate-200 font-body text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
-                />
-                <select className="w-full px-4 py-3 rounded-[10px] border border-slate-200 font-body text-sm text-[#64748B] focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all">
-                  <option value="">Project Size</option>
-                  {cta.projectSizes.map((size) => (
-                    <option key={size} value={size}>{size}</option>
-                  ))}
-                </select>
-                <input
-                  type="number"
-                  placeholder="No. of Active Sites"
-                  className="w-full px-4 py-3 rounded-[10px] border border-slate-200 font-body text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
-                />
+                <div>
+                  <label htmlFor="full-name" className="sr-only">Full Name</label>
+                  <input
+                    id="full-name"
+                    type="text"
+                    placeholder="Full Name"
+                    required
+                    className="w-full px-4 py-3 rounded-[10px] border border-slate-200 font-body text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="work-email" className="sr-only">Work Email</label>
+                  <input
+                    id="work-email"
+                    type="email"
+                    placeholder="Work Email"
+                    required
+                    className="w-full px-4 py-3 rounded-[10px] border border-slate-200 font-body text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="company" className="sr-only">Company</label>
+                  <input
+                    id="company"
+                    type="text"
+                    placeholder="Company"
+                    required
+                    className="w-full px-4 py-3 rounded-[10px] border border-slate-200 font-body text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="project-size" className="sr-only">Project Size</label>
+                  <select 
+                    id="project-size"
+                    className="w-full px-4 py-3 rounded-[10px] border border-slate-200 font-body text-sm text-[#64748B] focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
+                  >
+                    <option value="">Project Size</option>
+                    {cta.projectSizes.map((size) => (
+                      <option key={size} value={size}>{size}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="active-sites" className="sr-only">No. of Active Sites</label>
+                  <input
+                    id="active-sites"
+                    type="number"
+                    placeholder="No. of Active Sites"
+                    className="w-full px-4 py-3 rounded-[10px] border border-slate-200 font-body text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
+                  />
+                </div>
                 <button
                   type="submit"
                   className="w-full bg-blue-600 text-white font-body font-medium py-3.5 rounded-[10px] hover:bg-[#1d4ed8] transition-all"
@@ -85,11 +112,11 @@ export default function Demo() {
             </div>
 
             {/* Secondary CTAs */}
-            <div className="flex flex-wrap gap-4 justify-center mt-8">
+            <div className="flex flex-wrap gap-4 justify-center mt-8" role="group" aria-label="Other contact options">
               {cta.secondaryCtas.map((label) => (
                 <button
                   key={label}
-                  className="font-body text-sm text-white/60 border border-white/20 px-6 py-2.5 rounded-[10px] hover:text-white hover:border-white/40 transition-all"
+                  className="font-body text-sm text-white/60 border border-white/20 px-6 py-2.5 rounded-[10px] hover:text-white hover:border-white/40 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
                 >
                   {label}
                 </button>

@@ -49,9 +49,10 @@ export default function CaseStudies() {
                 >
                   <button
                     onClick={() => setSelected(null)}
-                    className="flex items-center gap-2 font-body text-blue-600 text-sm mb-8 hover:underline"
+                    className="flex items-center gap-2 font-body text-blue-600 text-sm mb-8 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-600 rounded"
+                    aria-label="Back to all case studies"
                   >
-                    <ArrowLeft size={16} /> Back to All Case Studies
+                    <ArrowLeft size={16} aria-hidden="true" /> Back to All Case Studies
                   </button>
 
                   {(() => {
@@ -67,9 +68,9 @@ export default function CaseStudies() {
                         <p className="font-body text-[#64748B] text-sm mb-8">{study.client}</p>
 
                         {/* Results grid */}
-                        <div className="grid grid-cols-3 gap-4 mb-10">
+                        <div className="grid grid-cols-3 gap-4 mb-10" aria-label="Key project results">
                           {study.results.map((r) => (
-                            <div key={r.label} className="bg-navy-950 rounded-2xl p-6 text-center">
+                            <div key={r.label} className="bg-navy-950 rounded-2xl p-6 text-center shadow-lg border border-blue-900/30">
                               <p className="font-display font-extrabold text-blue-500 text-3xl mb-1">{r.metric}</p>
                               <p className="font-body text-white/50 text-xs uppercase tracking-wider">{r.label}</p>
                             </div>
@@ -84,11 +85,11 @@ export default function CaseStudies() {
                         </div>
 
                         <div className="bg-navy-800 rounded-2xl p-8 border-l-4 border-blue-600">
-                          <Quote size={24} className="text-blue-500 mb-3" />
-                          <p className="font-body font-light text-white/80 text-lg italic leading-relaxed mb-3">
+                          <Quote size={24} aria-hidden="true" className="text-blue-500 mb-3" />
+                          <blockquote className="font-body font-light text-white/80 text-lg italic leading-relaxed mb-3">
                             &ldquo;{study.quote}&rdquo;
-                          </p>
-                          <p className="font-body text-white/40 text-sm">— {study.quoteAuthor}</p>
+                          </blockquote>
+                          <cite className="font-body text-white/40 text-sm not-italic">— {study.quoteAuthor}</cite>
                         </div>
                       </div>
                     );
@@ -102,18 +103,29 @@ export default function CaseStudies() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   className="grid grid-cols-1 md:grid-cols-3 gap-6"
+                  role="list"
+                  aria-label="Case studies listing"
                 >
                   {caseStudies.studies.map((study, i) => (
                     <motion.div
                       key={study.title}
+                      role="listitem"
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
                       variants={fadeUp}
                       transition={{ delay: i * 0.12 }}
                       whileHover={{ y: -4, boxShadow: "0 8px 40px rgba(37,99,235,0.12)" }}
-                      className="bg-white rounded-2xl border border-slate-200 overflow-hidden cursor-pointer group"
+                      className="bg-white rounded-2xl border border-slate-200 overflow-hidden cursor-pointer group focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 outline-none"
+                      tabIndex={0}
                       onClick={() => setSelected(i)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          setSelected(i);
+                        }
+                      }}
+                      aria-label={`View case study: ${study.title}`}
                     >
                       {/* Color header */}
                       <div className="bg-navy-950 h-40 flex items-center justify-center p-6">
@@ -129,7 +141,7 @@ export default function CaseStudies() {
                           {study.summary}
                         </p>
                         <span className="font-body text-blue-600 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-                          Read Case Study <ArrowRight size={14} />
+                          Read Case Study <ArrowRight size={14} aria-hidden="true" />
                         </span>
                       </div>
                     </motion.div>

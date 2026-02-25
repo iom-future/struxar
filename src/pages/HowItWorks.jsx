@@ -48,7 +48,7 @@ export default function HowItWorks() {
         <section className="bg-slate-50 section-padding relative">
           <div className="max-w-5xl mx-auto relative">
             {/* Connector line (desktop only) */}
-            <div className="hidden md:block absolute left-[39px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-600/40 via-blue-600/20 to-transparent" />
+            <div className="hidden md:block absolute left-[39px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-600/40 via-blue-600/20 to-transparent" aria-hidden="true" />
 
             <div className="space-y-16">
               {howItWorks.pillars.map((pillar, i) => {
@@ -59,9 +59,9 @@ export default function HowItWorks() {
                       {/* Step number + icon */}
                       <motion.div variants={fadeUp} className="flex-shrink-0 relative">
                         <div className="w-20 h-20 rounded-2xl bg-blue-600/10 border border-blue-600/20 flex items-center justify-center">
-                          <Icon size={32} className="text-blue-600" />
+                          <Icon size={32} aria-hidden="true" className="text-blue-600" />
                         </div>
-                        <span className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-blue-600 text-white text-xs font-display font-bold flex items-center justify-center">
+                        <span className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-blue-600 text-white text-xs font-display font-bold flex items-center justify-center" aria-label={`Step ${pillar.step}`}>
                           {pillar.step}
                         </span>
                       </motion.div>
@@ -76,10 +76,10 @@ export default function HowItWorks() {
                           {pillar.description}
                         </p>
                         <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3" aria-label={`${pillar.title} features breakdown`}>
                             {pillar.details.map((detail) => (
                               <li key={detail} className="flex items-start gap-3">
-                                <ArrowRight size={14} className="text-blue-600 mt-1 flex-shrink-0" />
+                                <ArrowRight size={14} aria-hidden="true" className="text-blue-600 mt-1 flex-shrink-0" />
                                 <span className="font-body text-[#0F172A] text-sm">{detail}</span>
                               </li>
                             ))}
