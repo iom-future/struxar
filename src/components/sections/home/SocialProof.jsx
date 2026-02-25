@@ -3,6 +3,11 @@ import StatCounter from "../../ui/StatCounter";
 import TestimonialCard from "../../ui/TestimonialCard";
 import AnimatedSection, { fadeUp, stagger } from "../../ui/AnimatedSection";
 import { socialProof } from "../../../constants/content";
+import t1 from "../../../assets/testimonials/s_test1.jpg";
+import t2 from "../../../assets/testimonials/s_test2.jpg";
+import t3 from "../../../assets/testimonials/s_test3.jpg";
+
+const testimonialImages = [t1, t2, t3];
 
 export default function SocialProof() {
   return (
@@ -35,11 +40,11 @@ export default function SocialProof() {
         {/* Testimonials */}
         <motion.div
           variants={stagger}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16"
         >
-          {socialProof.testimonials.map((t) => (
+          {socialProof.testimonials.map((t, i) => (
             <motion.div key={t.name} variants={fadeUp}>
-              <TestimonialCard {...t} />
+              <TestimonialCard {...t} image={testimonialImages[i]} />
             </motion.div>
           ))}
         </motion.div>

@@ -1,11 +1,12 @@
-import sol1 from "../../../assets/solutions/solution1.png";
-import sol2 from "../../../assets/solutions/solution2.png";
-import sol3 from "../../../assets/solutions/solution3.png";
-import sol4 from "../../../assets/solutions/solution4.png";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection, { fadeUp } from "../../ui/AnimatedSection";
 import { solution } from "../../../constants/content";
+import sol1 from "../../../assets/solutions/solution1.png";
+import sol2 from "../../../assets/solutions/solution2.png";
+import sol3 from "../../../assets/solutions/solution3.png";
+import sol4 from "../../../assets/solutions/solution4.png";
+
 const solutionImages = [sol1, sol2, sol3, sol4];
 
 export default function Solution() {
