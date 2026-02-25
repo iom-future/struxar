@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { nav } from "../../constants/content";
 import logo from "../../assets/struxar_logo.png";
 
-export default function Nav() {
+const Nav = memo(function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -30,14 +30,16 @@ export default function Nav() {
       <nav
         className="bg-navy-900 border-b border-blue-600/10"
         style={{ height: "64px" }}
+        aria-label="Main navigation"
       >
         <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-4 md:px-8">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group">
+          <Link to="/" className="flex items-center gap-2.5 group" aria-label="Struxar Home">
             <img 
               src={logo} 
-              alt="Struxar" 
+              alt="" 
               className="h-8 w-auto object-contain" 
+              aria-hidden="true"
             />
             <span
               className="font-display font-bold text-white text-sm tracking-[0.05em] group-hover:text-blue-400 transition-colors"
@@ -47,27 +49,31 @@ export default function Nav() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          <ul className="hidden md:flex items-center gap-6 lg:gap-8">
             {nav.links.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                className={({ isActive }) =>
-                  `font-body text-[0.875rem] lg:text-base transition-colors ${
-                    isActive
-                      ? "text-white underline underline-offset-4"
-                      : "text-white/[0.72] hover:text-white"
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
+              <li key={link.to}>
+                <NavLink
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `font-body text-[0.875rem] lg:text-base transition-colors ${
+                      isActive
+                        ? "text-white underline underline-offset-4"
+                        : "text-white/[0.72] hover:text-white"
+                    }`
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              </li>
             ))}
-          </div>
+          </ul>
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <button className="font-body text-[0.875rem] lg:text-base text-white px-4 py-2 hover:text-blue-400 transition-colors">
+            <button 
+              type="button"
+              className="font-body text-[0.875rem] lg:text-base text-white px-4 py-2 hover:text-blue-400 transition-colors"
+            >
               Log In
             </button>
             <Link
@@ -89,9 +95,11 @@ export default function Nav() {
 
           {/* Mobile Hamburger */}
           <button
+            type="button"
             className="md:hidden text-white p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -107,29 +115,40 @@ export default function Nav() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 top-0 z-[99] bg-navy-950 flex flex-col items-center justify-center gap-6 md:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation menu"
           >
             <button
+              type="button"
               className="absolute top-5 right-5 text-white p-2"
               onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
             >
               <X size={28} />
             </button>
-            {nav.links.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                onClick={() => setMobileOpen(false)}
-                className={({ isActive }) =>
-                  `font-body text-xl transition-colors ${
-                    isActive ? "text-white" : "text-white/60 hover:text-white"
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
+            <ul className="flex flex-col items-center gap-6">
+              {nav.links.map((link) => (
+                <li key={link.to}>
+                  <NavLink
+                    to={link.to}
+                    onClick={() => setMobileOpen(false)}
+                    className={({ isActive }) =>
+                      `font-body text-xl transition-colors ${
+                        isActive ? "text-white" : "text-white/60 hover:text-white"
+                      }`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
             <div className="flex flex-col gap-3 mt-6 w-64">
-              <button className="font-body text-white py-3 border border-white/20 rounded-[10px]">
+              <button 
+                type="button"
+                className="font-body text-white py-3 border border-white/20 rounded-[10px]"
+              >
                 Log In
               </button>
               <Link
@@ -145,4 +164,6 @@ export default function Nav() {
       </AnimatePresence>
     </header>
   );
-}
+});
+
+export default Nav;

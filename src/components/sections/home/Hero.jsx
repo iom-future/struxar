@@ -95,6 +95,7 @@ export default function Hero() {
                 {hero.ctaPrimary}
               </Link>
               <button
+                type="button"
                 onClick={() =>
                   document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })
                 }

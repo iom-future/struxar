@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection, { fadeUp } from "../../ui/AnimatedSection";
 import { solution } from "../../../constants/content";
@@ -11,6 +11,28 @@ const solutionImages = [sol1, sol2, sol3, sol4];
 
 export default function Solution() {
   const [activeTab, setActiveTab] = useState(0);
+  const tabListRef = useRef(null);
+
+  const handleKeyDown = (e) => {
+    let newTab = activeTab;
+    if (e.key === "ArrowRight") {
+      newTab = (activeTab + 1) % solution.tabs.length;
+    } else if (e.key === "ArrowLeft") {
+      newTab = (activeTab - 1 + solution.tabs.length) % solution.tabs.length;
+    } else if (e.key === "Home") {
+      newTab = 0;
+    } else if (e.key === "End") {
+      newTab = solution.tabs.length - 1;
+    }
+
+    if (newTab !== activeTab) {
+      setActiveTab(newTab);
+      const buttons = tabListRef.current?.querySelectorAll("button");
+      if (buttons && buttons[newTab]) {
+        buttons[newTab].focus();
+      }
+    }
+  };
 
   return (
     <AnimatedSection id="how-it-works" className="bg-slate-50 section-padding">
@@ -35,10 +57,22 @@ export default function Solution() {
         </motion.p>
 
         {/* Tab Switcher */}
-        <motion.div variants={fadeUp} className="flex flex-wrap gap-2 mb-6">
+        <motion.div 
+          variants={fadeUp} 
+          className="flex flex-wrap gap-2 mb-6"
+          role="tablist"
+          aria-label="Solution features"
+          ref={tabListRef}
+          onKeyDown={handleKeyDown}
+        >
           {solution.tabs.map((tab, i) => (
             <button
               key={tab.label}
+              id={`tab-${i}`}
+              role="tab"
+              aria-selected={activeTab === i}
+              aria-controls={`panel-${i}`}
+              tabIndex={activeTab === i ? 0 : -1}
               onClick={() => setActiveTab(i)}
               className={`font-body text-sm xl:text-base px-5 py-2.5 rounded-full transition-all ${
                 activeTab === i
@@ -56,7 +90,7 @@ export default function Solution() {
           variants={fadeUp}
           className="md:hidden flex items-center gap-2 mb-4 text-[#64748B] text-xs font-body font-medium"
         >
-          <span className="flex gap-1">
+          <span className="flex gap-1" aria-hidden="true">
             <motion.span 
               animate={{ x: [0, -4, 0] }} 
               transition={{ repeat: Infinity, duration: 1.5 }}
@@ -67,6 +101,7 @@ export default function Solution() {
               transition={{ repeat: Infinity, duration: 1.5 }}
             >→</motion.span>
           </span>
+          <span className="sr-only">Swipe left or right to switch tabs</span>
         </motion.div>
 
         {/* Tab Content */}
@@ -75,6 +110,9 @@ export default function Solution() {
           className="relative"
         >
           <motion.div 
+            id={`panel-${activeTab}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${activeTab}`}
             className="bg-white rounded-[20px] border border-slate-200 overflow-hidden md:h-[370px] h-auto flex flex-col md:flex-row touch-pan-y cursor-grab active:cursor-grabbing"
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
@@ -106,8 +144,9 @@ export default function Solution() {
                 >
                   <img
                     src={solutionImages[activeTab]}
-                    alt={solution.tabs[activeTab].label}
+                    alt=""
                     className="w-full h-full object-cover"
+                    aria-hidden="true"
                   />
                 </motion.div>
               </AnimatePresence>
@@ -147,7 +186,7 @@ export default function Solution() {
           variants={fadeUp}
           className="md:hidden flex items-center gap-2 mb-8 mt-4 text-[#64748B] text-xs font-body font-medium"
         >
-          <span className="flex gap-1">
+          <span className="flex gap-1" aria-hidden="true">
             <motion.span 
               animate={{ x: [0, -4, 0] }} 
               transition={{ repeat: Infinity, duration: 1.5 }}
@@ -158,6 +197,7 @@ export default function Solution() {
               transition={{ repeat: Infinity, duration: 1.5 }}
             >→</motion.span>
           </span>
+          <span className="sr-only">Swipe left or right to switch tabs</span>
         </motion.div>
         {/* Convergence Banner */}
         <motion.div

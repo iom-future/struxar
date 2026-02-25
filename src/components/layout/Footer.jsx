@@ -1,21 +1,24 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Youtube } from "lucide-react";
 import { footer } from "../../constants/content";
 import logo from "../../assets/struxar_logo.png";
 
-export default function Footer() {
+const Footer = memo(function Footer() {
   return (
-    <footer className="bg-navy-900 border-t border-blue-600/20">
+    <footer className="bg-navy-900 border-t border-blue-600/20" aria-labelledby="footer-heading">
+      <h2 id="footer-heading" className="sr-only">Footer</h2>
       <div className="max-w-7xl mx-auto section-padding">
         {/* Top grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand column */}
           <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-2.5 mb-6 group">
+            <Link to="/" className="flex items-center gap-2.5 mb-6 group" aria-label="Struxar Home">
               <img 
                 src={logo} 
-                alt="Struxar" 
+                alt="" 
                 className="h-7 w-auto object-contain" 
+                aria-hidden="true"
               />
               <span
                 className="font-display font-bold text-white text-sm tracking-[0.05em] group-hover:text-blue-400 transition-colors"
@@ -29,13 +32,13 @@ export default function Footer() {
             {/* Social links */}
             <div className="flex items-center gap-4">
               <a href="#" className="text-white/40 hover:text-blue-400 transition-colors" aria-label="LinkedIn">
-                <Linkedin size={20} />
+                <Linkedin size={20} aria-hidden="true" />
               </a>
               <a href="#" className="text-white/40 hover:text-blue-400 transition-colors" aria-label="Twitter">
-                <Twitter size={20} />
+                <Twitter size={20} aria-hidden="true" />
               </a>
               <a href="#" className="text-white/40 hover:text-blue-400 transition-colors" aria-label="YouTube">
-                <Youtube size={20} />
+                <Youtube size={20} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -43,9 +46,9 @@ export default function Footer() {
           {/* Nav columns */}
           {footer.columns.map((col) => (
             <div key={col.title}>
-              <h4 className="font-display font-bold text-white text-sm mb-4 tracking-wide md:text-lg">
+              <h3 className="font-display font-bold text-white text-sm mb-4 tracking-wide md:text-lg">
                 {col.title}
-              </h4>
+              </h3>
               <ul className="space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
@@ -63,7 +66,7 @@ export default function Footer() {
         </div>
 
         {/* Contact details */}
-        <div className="border-t border-white/10 pt-8 mb-8">
+        <div className="border-t border-white/10 pt-8 mb-8" aria-label="Contact Information">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             <div>
               <p className="font-body text-white/30 text-xs uppercase tracking-wider mb-1">General Inquiries</p>
@@ -91,20 +94,22 @@ export default function Footer() {
         {/* Legal */}
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-body text-white/30 text-xs">{footer.legal}</p>
-          <div className="flex items-center gap-4">
+          <ul className="flex items-center gap-4">
             {footer.legalLinks.map((link, i) => (
-              <span key={link}>
+              <li key={link} className="flex items-center">
                 <a href="#" className="font-body text-white/30 text-xs hover:text-white/60 transition-colors">
                   {link}
                 </a>
                 {i < footer.legalLinks.length - 1 && (
-                  <span className="text-white/20 ml-4">|</span>
+                  <span className="text-white/20 ml-4" aria-hidden="true">|</span>
                 )}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </footer>
   );
-}
+});
+
+export default Footer;
