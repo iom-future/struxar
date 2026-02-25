@@ -19,13 +19,9 @@ export default function Solution() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-2"
-          style={{
-            background: "rgba(37,99,235,0.12)",
-            border: "1px solid rgba(37,99,235,0.3)",
-          }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-blue-600/10 border border-blue-600/30"
         >
-          <span className="text-xs text-blue-400">{solution.eyebrow}</span>
+          <span className="text-xs font-bold tracking-widest text-blue-400 uppercase">{solution.eyebrow}</span>
         </motion.div>
         <motion.h2
           variants={fadeUp}

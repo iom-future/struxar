@@ -19,9 +19,9 @@ export default function Team() {
         <div className="text-center mb-16">
           <motion.div
             variants={fadeUp}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 bg-blue-50 border border-blue-100"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-blue-600/10 border border-blue-600/30"
           >
-            <span className="text-xs font-semibold tracking-wider text-blue-600 uppercase">
+            <span className="text-xs font-bold tracking-widest text-blue-400 uppercase">
               {team.eyebrow}
             </span>
           </motion.div>

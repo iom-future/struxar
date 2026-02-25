@@ -13,18 +13,14 @@ export default function SocialProof() {
   return (
     <AnimatedSection className="bg-navy-950 section-padding">
       <div className="max-w-6xl mx-auto">
-       <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
-              style={{
-                background: "rgba(37,99,235,0.12)",
-                border: "1px solid rgba(37,99,235,0.3)",
-              }}
-            >
-              <span className="text-xs text-blue-400">{socialProof.eyebrow}</span>
-            </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 bg-blue-600/10 border border-blue-600/30"
+        >
+          <span className="text-xs font-bold tracking-widest text-blue-400 uppercase">{socialProof.eyebrow}</span>
+        </motion.div>
         <motion.h2
           variants={fadeUp}
           className="font-display font-bold text-white mb-6"

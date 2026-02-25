@@ -33,13 +33,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
-              style={{
-                background: "rgba(37,99,235,0.12)",
-                border: "1px solid rgba(37,99,235,0.3)",
-              }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 bg-blue-600/10 border border-blue-600/30"
             >
-              <span className="text-xs text-blue-400">{hero.eyebrow}</span>
+              <span className="text-xs font-bold tracking-widest text-blue-400 uppercase">{hero.eyebrow}</span>
             </motion.div>
 
             {/* H1 */}
