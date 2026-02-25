@@ -3,9 +3,22 @@ import BentoCard from "../../ui/BentoCard";
 import AnimatedSection, { fadeUp, stagger } from "../../ui/AnimatedSection";
 import { features } from "../../../constants/content";
 
+// Feature Images
+import feat1 from "../../../assets/features/s_feature1-removebg-preview.png";
+import feat2 from "../../../assets/features/s_feature2-removebg-preview.png";
+import feat4 from "../../../assets/features/s_feature4-removebg-preview.png";
+import feat5 from "../../../assets/features/s_feature5-removebg-preview (1).png";
+
+const featureImages = {
+  0: feat1,
+  1: feat2,
+  3: feat4,
+  4: feat5,
+};
+
 export default function Features() {
   return (
-    <AnimatedSection className="bg-slate-50 section-padding">
+    <AnimatedSection className="bg-slate-50 section-padding overflow-hidden">
       <div className="max-w-6xl mx-auto">
       <motion.div
                    initial={{ opacity: 0, y: 20 }}
@@ -30,16 +43,44 @@ export default function Features() {
           {features.intro}
         </motion.p>
 
-        {/* Standard Grid */}
+        {/* Custom Bento Grid */}
         <motion.div
           variants={stagger}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 lg:grid-cols-10 gap-8"
         >
-          {features.cards.map((card) => (
-            <motion.div key={card.title} variants={fadeUp}>
-              <BentoCard {...card} />
-            </motion.div>
-          ))}
+          {features.cards.map((card, i) => {
+            // Grid logic based on user design:
+            // Row 1: 60% (index 0) | 40% (index 1)
+            // Row 2: 40% (index 2) | 60% (index 3)
+            // Row 3: 50% (index 4) | 50% (index 5)
+            
+            let colSpan = "lg:col-span-10"; // Default mobile
+            let image = null;
+
+            if (i === 0) { // Box 1: 60%
+              colSpan = "lg:col-span-6";
+              image = feat1;
+            } else if (i === 1) { // Box 2: 40%
+              colSpan = "lg:col-span-4";
+            } else if (i === 2) { // Box 3: 40%
+              colSpan = "lg:col-span-4";
+            } else if (i === 3) { // Box 4: 60%
+              colSpan = "lg:col-span-6";
+              image = feat2;
+            } else if (i === 4) { // Box 5: 50%
+              colSpan = "lg:col-span-5";
+              image = feat4;
+            } else if (i === 5) { // Box 6: 50%
+              colSpan = "lg:col-span-5";
+              image = feat5;
+            }
+
+            return (
+              <motion.div key={card.title} variants={fadeUp} className={colSpan}>
+                <BentoCard {...card} image={image} />
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </AnimatedSection>
