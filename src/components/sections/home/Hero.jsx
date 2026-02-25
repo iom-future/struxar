@@ -25,7 +25,7 @@ export default function Hero() {
 
       {/* Content Container */}
       <div className="relative max-w-7xl mx-auto section-padding">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16">
           {/* Text Content (50% on desktop) */}
           <div className="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* Eyebrow */}
@@ -47,7 +47,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display text-4xl lg:text-5xl font-extrabold text-white mb-6"
+              className="font-display md:text-4xl text-3xl lg:text-5xl font-extrabold text-white mb-6"
               style={{
                 letterSpacing: "-0.02em",
                 lineHeight: 1.1,
